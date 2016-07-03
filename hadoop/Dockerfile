@@ -7,7 +7,7 @@ ENV HADOOP_CONFIG_HOME $HADOOP_HOME/etc/hadoop
 RUN apt-get update -y
 RUN apt-get -y install software-properties-common python-software-properties
 RUN add-apt-repository ppa:webupd8team/java
-RUN apt-get install oracle-java7-installer
+RUN apt-get install oracle-java8-installer
 RUN apt-get install ssh
 RUN systemctl enable sshd
 RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_dsa
