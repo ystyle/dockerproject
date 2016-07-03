@@ -4,21 +4,8 @@ MAINTAINER lxy5266@live.com <ystyle>
 ENV HADOOP_HOME /usr/lib/hadoop
 ENV HADOOP_CONFIG_HOME $HADOOP_HOME/etc/hadoop
 
-RUN echo "" /etc/apt/sources.list && tee /etc/apt/sources.list <<-'EOF'\
-deb http://mirrors.hust.edu.cn/ubuntu/ xenial main restricted universe multiverse\
-deb http://mirrors.hust.edu.cn/ubuntu/ xenial-security main restricted universe multiverse\
-deb http://mirrors.hust.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse\
-deb http://mirrors.hust.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse\
-deb http://mirrors.hust.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse\
-deb-src http://mirrors.hust.edu.cn/ubuntu/ xenial main restricted universe multiverse\
-deb-src http://mirrors.hust.edu.cn/ubuntu/ xenial-security main restricted universe multiverse\
-deb-src http://mirrors.hust.edu.cn/ubuntu/ xenial-updates main restricted universe multiverse\
-deb-src http://mirrors.hust.edu.cn/ubuntu/ xenial-proposed main restricted universe multiverse\
-deb-src http://mirrors.hust.edu.cn/ubuntu/ xenial-backports main restricted universe multiverse\
-EOF
-
-RUN apt-get update
-RUN apt-get install software-properties-common python-software-properties
+RUN apt-get update -y
+RUN apt-get -y install software-properties-common python-software-properties
 RUN add-apt-repository ppa:webupd8team/java
 RUN apt-get install oracle-java7-installer
 RUN apt-get install ssh
