@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.10
 MAINTAINER lxy5266@live.com <ystyle>
 
 ENV HADOOP_HOME /usr/lib/hadoop
