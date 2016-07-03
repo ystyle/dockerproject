@@ -4,7 +4,7 @@ MAINTAINER lxy5266@live.com <ystyle>
 ENV HADOOP_HOME /usr/lib/hadoop
 ENV HADOOP_CONFIG_HOME $HADOOP_HOME/etc/hadoop
 
-RUN apt-get update &&\
+RUN apt-get update -y &&\
     apt-get install software-properties-common python-software-properties &&\
     add-apt-repository ppa:webupd8team/java &&\
     apt-get install oracle-java7-installer &&\
