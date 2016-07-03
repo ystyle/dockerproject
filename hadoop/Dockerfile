@@ -40,7 +40,8 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
     ln -s "java-${JAVA_VERSION}-oracle" "$JAVA_HOME" && \
     ln -s "$JAVA_HOME/bin/"* "/usr/bin/" && \
     rm -rf "$JAVA_HOME/"*src.zip && \
-    wget -q " http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz" && tar -xzf "hadoop-2.7.2.tar.gz" && \
+    wget -q "http://www.apache.org/dyn/closer.cgi/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz" && \
+    tar -xzf "hadoop-2.7.2.tar.gz" && \
     mv "/tmp/hadoop-2.7.2" "/usr/lib" && \
     sed -i 's/export JAVA_HOME=\${JAVA_HOME}/export JAVA_HOME=${JAVA_HOME}' $HADOOP_CONFIG_HOME/hadoop-env.sh && \
     rm "/tmp/"* && \
@@ -52,10 +53,10 @@ RUN apk add --no-cache --virtual=build-dependencies wget ca-certificates && \
     chown -R user /home/user/
 
 
-COPY core-site.xml $HADOOP_CONFIG_HOME/core-site.xml
-COPY hdfs-site.xml $HADOOP_CONFIG_HOME/hdfs-site.xml
-COPY mapred-site.xml $HADOOP_CONFIG_HOME/mapred-site.xml
-COPY slaves $HADOOP_CONFIG_HOME/slaves
+COPY core-site.xml ${HADOOP_CONFIG_HOME}/core-site.xml
+COPY hdfs-site.xml ${$HADOOP_CONFIG_HOME}/hdfs-site.xml
+COPY mapred-site.xml ${$HADOOP_CONFIG_HOME}/mapred-site.xml
+COPY slaves ${$HADOOP_CONFIG_HOME}/slaves
 
 EXPOSE 22
 
