@@ -7,11 +7,13 @@ ENV PATH $PATH:$HADOOP_HOME/sbin
 
 ENV PATH $JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
-RUN wget -q "http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz" && tar -xzf "hadoop-2.7.2.tar.gz"
+RUN cd "/tmp"
+RUN wget -q "http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz"
+RUN tar -xzf "hadoop-2.7.2.tar.gz"
 RUN mv "/tmp/hadoop-2.7.2" "/usr/lib"
 RUN rm "/tmp/"*
 RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_dsa
-RUN cat id_dsa.pub >> authorized_keys  
+RUN cat id_dsa.pub >> authorized_keys
 RUN sed -i 's/export JAVA_HOME=\${JAVA_HOME}/export JAVA_HOME=\/usr\/lib\/jvm\/java-8-oracle/' $HADOOP_CONFIG_HOME/hadoop-env.sh
 
 COPY core-site.xml $HADOOP_CONFIG_HOME/core-site.xml
