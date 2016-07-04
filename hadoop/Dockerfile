@@ -8,7 +8,7 @@ ENV PATH $PATH:$HADOOP_HOME/sbin
 ENV PATH $JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
 RUN cd "/tmp"
-RUN wget -q "http://www-us.apache.org/dist/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz"
+RUN wget "http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz"
 RUN tar -xzf "hadoop-2.7.2.tar.gz"
 RUN mv "/tmp/hadoop-2.7.2" "/usr/lib"
 RUN rm "/tmp/"*
