@@ -10,7 +10,7 @@ ENV PATH $PATH:$HADOOP_HOME/sbin
 ENV PATH $JAVA_HOME/bin:$M2_HOME/bin:$PATH
 
 RUN cd "/usr/lib"
-RUN wget "http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz"
+RUN wget "http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz"
 RUN tar -xzf "hadoop-2.7.2.tar.gz"
 RUN rm "hadoop-2.7.2.tar.gz"
 RUN ssh-keygen -t rsa -P '' -f ~/.ssh/id_dsa
