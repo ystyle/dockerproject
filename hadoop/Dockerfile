@@ -1,5 +1,7 @@
 FROM codenvy/ubuntu_jdk8
 
+USER root
+
 ENV HADOOP_HOME /usr/lib/hadoop
 ENV HADOOP_CONFIG_HOME $HADOOP_HOME/etc/hadoop
 ENV PATH $PATH:$HADOOP_HOME/bin
