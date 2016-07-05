@@ -2,14 +2,13 @@ FROM codenvy/ubuntu_jdk8
 
 USER root
 
-ENV HADOOP_HOME=/usr/lib/hadoop-2.7.2 \
-    HADOOP_CONFIG_HOME=$HADOOP_HOME/etc/hadoop \
-    PATH=$PATH:$HADOOP_HOME/bin \
-    PATH=$PATH:$HADOOP_HOME/sbin \
-    PATH=$JAVA_HOME/bin:$M2_HOME/bin:$PATH
+ENV HADOOP_HOME=/usr/lib/hadoop-2.7.2
+ENV HADOOP_CONFIG_HOME=$HADOOP_HOME/etc/hadoop
+ENV PATH=$PATH:$HADOOP_HOME/bin
+ENV PATH=$PATH:$HADOOP_HOME/sbin
 
 RUN cd "/usr/lib" && \
-    wget "http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz" && \
+    wget -q "http://mirrors.sonic.net/apache/hadoop/common/hadoop-2.7.2/hadoop-2.7.2.tar.gz" && \
     tar -xzf "hadoop-2.7.2.tar.gz" && \
     rm "hadoop-2.7.2.tar.gz" && \
     ssh-keygen -t rsa -P '' -f ~/.ssh/id_dsa && \
