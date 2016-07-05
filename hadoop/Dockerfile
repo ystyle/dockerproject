@@ -2,7 +2,7 @@ FROM codenvy/ubuntu_jdk8
 
 USER root
 
-ENV HADOOP_HOME=/usr/lib/hadoop \
+ENV HADOOP_HOME=/usr/lib/hadoop-2.7.2 \
     HADOOP_CONFIG_HOME=$HADOOP_HOME/etc/hadoop \
     PATH=$PATH:$HADOOP_HOME/bin \
     PATH=$PATH:$HADOOP_HOME/sbin \
@@ -13,7 +13,7 @@ RUN cd "/usr/lib" && \
     tar -xzf "hadoop-2.7.2.tar.gz" && \
     rm "hadoop-2.7.2.tar.gz" && \
     ssh-keygen -t rsa -P '' -f ~/.ssh/id_dsa && \
-    cat ~/.ssh/id_dsa >> authorized_keys && \
+    cat ~/.ssh/id_dsa >> ~/.ssh/authorized_keys && \
     sed -i 's/export JAVA_HOME=\${JAVA_HOME}/export JAVA_HOME=\/usr\/lib\/jvm\/java-8-oracle/' $HADOOP_CONFIG_HOME/hadoop-env.sh
 
 COPY core-site.xml $HADOOP_CONFIG_HOME/core-site.xml
