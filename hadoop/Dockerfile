@@ -13,7 +13,7 @@ RUN cd "/usr/lib" && \
     tar -xzf "hadoop-2.7.2.tar.gz" && \
     rm "hadoop-2.7.2.tar.gz" && \
     ssh-keygen -t rsa -P '' -f ~/.ssh/id_dsa && \
-    cat id_dsa.pub >> authorized_keys && \
+    cat ~/.ssh/id_dsa >> authorized_keys && \
     sed -i 's/export JAVA_HOME=\${JAVA_HOME}/export JAVA_HOME=\/usr\/lib\/jvm\/java-8-oracle/' $HADOOP_CONFIG_HOME/hadoop-env.sh
 
 COPY core-site.xml $HADOOP_CONFIG_HOME/core-site.xml
