@@ -7,8 +7,13 @@ RUN yum -y install automake libtool libreadline-dev zlib1g-dev uuid-dev libgoogl
     yum -y --enablerepo=remi install mysql mysql-server mysql.x86_64 mysql-devel.x86_64 && \
     yum -y install make automake zlib-devel readline-devel ncurses-devel.x86_64 ncurses.x86_64 subversion && \
     svn checkout -r 18 http://code.taobao.org/svn/tb-common-utils/trunk/ ~/tb-common-utils && \
-    export TBLIB_ROOT=/usr/local/tb/lib && cd ~/tb-common-utils/ && chmod +x *.sh && ./build.sh && \
+    export TBLIB_ROOT=/usr/local/tb/lib && \
+    cd ~/tb-common-utils/ && \
+    chmod +x *.sh && \
+    ./build.sh && \
     svn checkout http://code.taobao.org/svn/tfs/tags/release-2.2.10 ~/tfs-2.2.10 && \
-    export TBLIB_ROOT=/usr/local/tb/lib && cd ~/tfs-2.2.10/ && chmod +x *.sh && \
-    ./build.sh init && ./configure --prefix=/usr/local/tfs --without-tcmalloc && \
+    export TBLIB_ROOT=/usr/local/tb/lib && \
+    cd ~/tfs-2.2.10/ && chmod +x *.sh && \
+    ./build.sh init && \
+    ./configure --prefix=/usr/local/tfs --without-tcmalloc && \
     make && make install
