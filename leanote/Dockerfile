@@ -22,4 +22,4 @@ VOLUME /leanote/data/
 
 EXPOSE 9000
 
-CMD ["sh", "/leanote/bin/run.sh"]
+CMD mongod & &S sh /leanote/bin/run.sh
