@@ -3,6 +3,9 @@ FROM ibmjava:8-sdk-alpine
 MAINTAINER ystyle <lxy5266@live.com> (@ystyle)
 
 RUN apk --update add --no-cache ca-certificates curl bash openssh \
+    && ssh-keygen -q -N "" -t rsa -f /root/.ssh/id_rsa \
+    && ssh-keygen -q -N "" -t rsa -f /etc/ssh/ssh_host_rsa_key \
+    && cp /root/.ssh/id_rsa.pub /root/.ssh/authorized_keys \
     && curl -L http://mirrors.shu.edu.cn/apache/hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz > /tmp/hadoop.tar.gz \
     && mkdir -p /opt \
     && tar -zxf /tmp/hadoop.tar.gz -C /opt \
@@ -34,4 +37,4 @@ RUN apk --update add --no-cache ca-certificates curl bash openssh \
 # HDFS
 EXPOSE 50010 50020 50070 50075 50090
 
-CMD /opt/hadoop/sbin/start-dfs.sh
+CMD /usr/sbin/sshd && /opt/hadoop/sbin/start-dfs.sh
