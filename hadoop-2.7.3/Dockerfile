@@ -29,9 +29,9 @@ RUN apk --update add --no-cache ca-certificates curl bash \
     && sed -i '27a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '28a  <name>dfs.datanode.data.dir</name>    ' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '29a  <value>file:/data/dfs/data</value>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
-    && sed -i '30a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml 
+    && sed -i '30a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml
     
-RUN ls -al /opt/ && ls -al /opt/hadoop/
-RUN /opt/hadoop/bin/hdfs namenode -format
+# HDFS
+EXPOSE 50010 50020 50070 50075 50090
 
 CMD /opt/hadoop/sbin/start-dfs.sh
