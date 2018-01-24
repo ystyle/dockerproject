@@ -1,4 +1,4 @@
-FROM ibmjava:8-sdk-alpine
+FROM ibmjava:8-sdk
 
 MAINTAINER ystyle <lxy5266@live.com> (@ystyle)
 
