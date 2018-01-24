@@ -4,9 +4,9 @@ MAINTAINER ystyle <lxy5266@live.com> (@ystyle)
 
 RUN apk --update add --no-cache ca-certificates curl \
     && curl -L http://mirrors.shu.edu.cn/apache/hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz > /tmp/hadoop.tar.gz \
-    && mkdir -p /opt
-RUN tar -zxvf /tmp/hadoop.tar.gz -C /opt
-RUN apk del curl \
+    && mkdir -p /opt \
+    && tar -zxf /tmp/hadoop.tar.gz -C /opt \
+    && apk del curl \
     && mv /opt/hadoop-2.7.5 /opt/hadoop \
     && rm -rf /tmp/* /var/cache/apk/* \
     && mkdir -p /data/temp /data/dfs/name /data/dfs/data 
@@ -30,7 +30,8 @@ RUN    sed -i '19a<property>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '27a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '28a  <name>dfs.datanode.data.dir</name>    ' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '29a  <value>file:/data/dfs/data</value>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
-    && sed -i '30a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
+    && sed -i '30a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml 
+    
 RUN /opt/hadoop/bin/hdfs namenode -format
 
 CMD /opt/hadoop/sbin/start-dfs.sh
