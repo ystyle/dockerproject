@@ -4,9 +4,10 @@ MAINTAINER ystyle <lxy5266@live.com> (@ystyle)
 
 RUN apk --update add --no-cache ca-certificates curl \
     && curl -L http://mirrors.shu.edu.cn/apache/hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz > /tmp/hadoop.tar.gz \
-    && mkdir -p /opt/hadoop && ls -al /tmp
-RUN tar -zxvf /tmp/hadoop.tar.gz -C /opt/hadoop 
+    && mkdir -p /opt
+RUN tar -zxvf /tmp/hadoop.tar.gz -C /opt
 RUN apk del curl \
+    && mv /opt/hadoop-2.7.5 /opt/hadoop \
     && rm -rf /tmp/* /var/cache/apk/* \
     && mkdir -p /data/temp /data/dfs/name /data/dfs/data 
     
