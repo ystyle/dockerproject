@@ -3,10 +3,9 @@ FROM ibmjava:8-sdk-alpine
 MAINTAINER ystyle <lxy5266@live.com> (@ystyle)
 
 RUN apk --update add --no-cache ca-certificates curl \
-    && HADOOP_VERSION="2.7.3" \
-    && curl -Ls http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-${HADOOP_VERSION}/hadoop-${HADOOP_VERSION}.tar.gz > /tmp/hadoop-${HADOOP_VERSION}.tar.gz \
+    && curl -Ls http://mirrors.hust.edu.cn/apache/hadoop/common/hadoop-2.7.3/hadoop-2.7.3.tar.gz > /tmp/hadoop.tar.gz \
     && mkdir -p /opt/hadoop 
-RUN tar -zxvf /tmp/hadoop-${HADOOP_VERSION}.tar.gz -C /opt/hadoop \
+RUN tar -zxvf /tmp/hadoop.tar.gz -C /opt/hadoop \
     && apk del curl \
     && rm -rf /tmp/* /var/cache/apk/* \
     && mkdir -p /data/temp /data/dfs/name /data/dfs/data 
