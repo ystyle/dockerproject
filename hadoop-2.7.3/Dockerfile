@@ -9,9 +9,8 @@ RUN apk --update add --no-cache ca-certificates curl \
     && apk del curl \
     && mv /opt/hadoop-2.7.5 /opt/hadoop \
     && rm -rf /tmp/* /var/cache/apk/* \
-    && mkdir -p /data/temp /data/dfs/name /data/dfs/data 
-    
-RUN    sed -i '19a<property>' /opt/hadoop/etc/hadoop/core-site.xml \
+    && mkdir -p /data/temp /data/dfs/name /data/dfs/data \    
+    && sed -i '19a<property>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '20a  <name>hadoop.tmp.dir</name>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '21a  <value>file:/data/temp</value>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '22a</property>' /opt/hadoop/etc/hadoop/core-site.xml \
