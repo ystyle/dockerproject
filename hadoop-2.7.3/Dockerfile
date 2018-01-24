@@ -32,6 +32,7 @@ RUN    sed -i '19a<property>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '29a  <value>file:/data/dfs/data</value>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '30a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml 
     
+RUN ls -al /opt/ && ls -al /opt/hadoop/
 RUN /opt/hadoop/bin/hdfs namenode -format
 
 CMD /opt/hadoop/sbin/start-dfs.sh
