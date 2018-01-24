@@ -1,8 +1,8 @@
-FROM ibmjava:8-sdk
+FROM ibmjava:8-sdk-alpine
 
 MAINTAINER ystyle <lxy5266@live.com> (@ystyle)
 
-RUN apk --update add --no-cache ca-certificates curl \
+RUN apk --update add --no-cache ca-certificates curl bash \
     && curl -L http://mirrors.shu.edu.cn/apache/hadoop/common/hadoop-2.7.5/hadoop-2.7.5.tar.gz > /tmp/hadoop.tar.gz \
     && mkdir -p /opt \
     && tar -zxf /tmp/hadoop.tar.gz -C /opt \
