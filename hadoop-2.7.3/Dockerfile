@@ -9,8 +9,9 @@ RUN apk --update add --no-cache ca-certificates curl \
     && tar -zxf /tmp/hadoop-${HADOOP_VERSION}.tar.gz -C /opt/hadoop \
     && apk del curl \
     && rm -rf /tmp/* /var/cache/apk/* \
-    && mkdir -p /data/temp /data/dfs/name /data/dfs/data \
-    && sed -i '19a<property>' /opt/hadoop/etc/hadoop/core-site.xml \
+    && mkdir -p /data/temp /data/dfs/name /data/dfs/data 
+    
+RUN    sed -i '19a<property>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '20a  <name>hadoop.tmp.dir</name>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '21a  <value>file:/data/temp</value>' /opt/hadoop/etc/hadoop/core-site.xml \
     && sed -i '22a</property>' /opt/hadoop/etc/hadoop/core-site.xml \
@@ -30,6 +31,6 @@ RUN apk --update add --no-cache ca-certificates curl \
     && sed -i '28a  <name>dfs.datanode.data.dir</name>    ' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '29a  <value>file:/data/dfs/data</value>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
     && sed -i '30a<property>' /opt/hadoop/etc/hadoop/hdfs-site.xml \
-    && /opt/hadoop/bin/hdfs namenode -format
+RUN /opt/hadoop/bin/hdfs namenode -format
 
 CMD /opt/hadoop/sbin/start-dfs.sh
