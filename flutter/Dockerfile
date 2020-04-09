@@ -1,1 +1,1 @@
-FORM cirrusci/flutter
+FROM cirrusci/flutter
