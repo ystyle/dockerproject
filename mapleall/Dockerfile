@@ -23,8 +23,8 @@ RUN sed -i 'N;16 a set -e' tools/setup_tools.sh && \
     cd tools && ./setup_tools.sh
 
 # set proxy
-ENV http_proxy=http://192.168.9.191:1081 \ 
-    https_proxy=http://192.168.9.191:1081
+#ENV http_proxy=http://192.168.9.191:1081 \ 
+#    https_proxy=http://192.168.9.191:1081
 
 WORKDIR /
 # build riscv-gnu-toolchain
