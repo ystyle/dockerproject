@@ -32,9 +32,7 @@ RUN git clone --depth=1 --recursive https://github.com/riscv/riscv-gnu-toolchain
     mkdir /usr/riscv64-linux-gnu && export PATH=/usr/riscv64-linux-gnu/bin:$PATH && \
     cd riscv-gnu-toolchain/ && ./configure --prefix=/usr/riscv64-linux-gnu && \
     make -j linux && \
-    ln -s /usr/riscv64-linux-gnu/sysroot/lib/ld-linux-riscv64-lp64d.so.1 /lib && \
-    cd qemu && ./configure --static --disable-system --target-list=riscv64-linux-user && \
-    make -j && cp riscv64-linux-user/qemu-riscv64 /usr/bin
+    ln -s /usr/riscv64-linux-gnu/sysroot/lib/ld-linux-riscv64-lp64d.so.1 /lib
 
 
 
